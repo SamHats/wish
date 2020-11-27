@@ -1,4 +1,4 @@
-import DateFormatter from '../components/date-formatter'
+import DateFormatter from '@/components/date-formatter'
 import Link from 'next/link'
 
 export default function HeroPost({
