@@ -1,7 +1,6 @@
 ---
-title: 'Preview post'
+title: 'Sams Wishes'
 excerpt: 'Doggo ipsum pats ruff shibe I am bekom fat very jealous pupper borking doggo corgo, wow such tempt h*ck corgo big ol heckin good boys and girls.'
-coverImage: '/assets/images/cover.jpg'
 date: '2020-03-16T05:35:07.322Z'
 author:
   name: Joe Haddad
