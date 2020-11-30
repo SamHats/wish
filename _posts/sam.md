@@ -3,7 +3,7 @@ title: 'Sams Wishes'
 excerpt: 'Please buy me nice things.'
 date: '2020-03-16T05:35:07.322Z'
 author:
-  name: Sam Clifford
+  name: Sam
   picture: '/assets/images/sc-logo.png'
 ogImage:
   url: '/assets/images/cover.jpg'

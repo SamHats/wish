@@ -10,7 +10,7 @@ import PostTitle from '@/components/post-title'
 import Head from 'next/head'
 import { CMS_NAME } from '@/lib/constants'
 import markdownToHtml from '@/lib/markdownToHtml'
-import Wish from '@/components/wish'
+import Wishes from '@/components/wishes'
 
 export default function Post({ post, preview }) {
   const router = useRouter()
@@ -38,14 +38,7 @@ export default function Post({ post, preview }) {
                 date={post.date}
                 author={post.author}
               />
-              {post.wishes.length > 1 &&
-                <>
-                  <h3>Wishes</h3>
-                  <ul>
-                    {post.wishes.map((wish, i) => <Wish wish={wish} key={i} />)}
-                  </ul>
-                </>
-              }
+              <Wishes wishes={post.wishes} />
               <PostBody content={post.content} />
             </article>
           </>
