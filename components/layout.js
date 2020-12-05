@@ -4,7 +4,7 @@ export default function Layout({children }) {
   return (
     <>
       <Meta />
-      <div className="min-h-screen bg-gradient-to-r from-red-400 to-blue-500">
+      <div className="min-h-screen bg-gradient-to-r from-purple-400 via-purple-300 to-blue-400">
         <main className="py-10">{children}</main>
       </div>
     </>
