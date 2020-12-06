@@ -5,14 +5,11 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 export default function NavItem({label, src}) {
-  const activeStyle = 'bg-gray-200'
+  const activeStyle = 'bg-purple-200 text-purple-800'
 
   const router = useRouter()
   let active = ''
-  if (router.pathname.includes(label.toLowerCase())) { active = activeStyle }
-  // else if (router.pathname === '/') { active = activeStyle }
-
-  console.info(active)
+  if (router.pathname === src.toLowerCase()) { active = activeStyle }
 
   return (
     <Link href={src}>
