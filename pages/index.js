@@ -25,7 +25,6 @@ export default function Index() {
           and styled with{' '}
           <a href="https://tailwindcss.com" className="underline hover:text-success duration-200 transition-colors">Tailwind css</a>
           </IntroSub>
-          <Link href="/wishes"><a className="bg-blue-100 text-blue-700 text-base font-semibold px-6 py-2 rounded-lg cursor-pointer">Wishes</a></Link>
         </Container>
       </Layout>
     </>
