@@ -6,5 +6,8 @@ module.exports = {
         'hero-texture': "url('/assets/images/cubes.png')",
       })
     }
-  }
+  },
+  plugins: [
+    require('@tailwindcss/typography'),
+  ]
 }

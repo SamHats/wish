@@ -1,16 +1,20 @@
+// Routing
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
-import Container from '@/components/container'
-import PostBody from '@/components/post-body'
-import Header from '@/components/header'
-import PostHeader from '@/components/post-header'
-import Layout from '@/components/layout'
-import { getPostBySlug, getAllPosts } from '@/lib/api'
-import PostTitle from '@/components/post-title'
 import Head from 'next/head'
-import { CMS_NAME } from '@/lib/constants'
+
+// Layout
+import Layout from '@/components/layout'
+import Container from '@/components/container'
+
+// Features
+import PostHeader from '@/components/wishes/wish-header'
+import PostTitle from '@/components/wishes/wish-title'
+import Wishes from '@/components/wishes/wishes'
+
+// Utilities
+import { getPostBySlug, getAllPosts } from '@/lib/api'
 import markdownToHtml from '@/lib/markdownToHtml'
-import Wishes from '@/components/wishes'
 
 export default function Post({ post, preview }) {
   const router = useRouter()
@@ -20,26 +24,20 @@ export default function Post({ post, preview }) {
   return (
     <Layout preview={preview}>
       <Container>
-        <Header />
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
         ) : (
           <>
-            <article className="mb-32">
+            <article>
               <Head>
-                <title>
-                  {post.title} | Next.js Blog Example with {CMS_NAME}
-                </title>
+                <title>{post.title}</title>
                 <meta property="og:image" content={post.ogImage.url} />
               </Head>
               <PostHeader
                 title={post.title}
-                coverImage={post.coverImage}
-                date={post.date}
                 author={post.author}
               />
-              <Wishes wishes={post.wishes} />
-              <PostBody content={post.content} />
+              <Wishes wishes={post.wishes} content={post.content} />
             </article>
           </>
         )}
@@ -56,7 +54,6 @@ export async function getStaticProps({ params }) {
     'author',
     'content',
     'ogImage',
-    'coverImage',
     'wishes'
   ])
   const content = await markdownToHtml(post.content || '')
