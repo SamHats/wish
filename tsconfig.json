@@ -23,7 +23,8 @@
       "@/lib/*": ["lib/*"],
       "@/pages/*": ["pages/*"],
       "@/public/*": ["public/*"],
-      "@/styles/*": ["styles/*"]
+      "@/styles/*": ["styles/*"],
+      "@/types/*": ["types/*"]
     }
   },
   "exclude": ["node_modules"],

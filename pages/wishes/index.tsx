@@ -11,7 +11,13 @@ import MoreWishes from '@/components/wishes/more-wishes'
 // Utilities
 import { getAllPosts } from '@/lib/api'
 
-export default function Index({ allWishes }) {
+// Types
+import Wish from '@/types/wish'
+type Props = {
+  allWishes: Wish[]
+}
+
+export default function Index({ allWishes }: Props) {
   return (
     <>
       <Layout>
