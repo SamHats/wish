@@ -9,7 +9,6 @@ import IntroSub from '@/components/intro/intro-sub'
 // Utils
 import Head from 'next/head'
 import { CMS_NAME } from '@/lib/constants'
-import Link from 'next/link'
 
 export default function Index() {
   return (
@@ -18,7 +17,7 @@ export default function Index() {
         <Head>
           <title>{CMS_NAME}</title>
         </Head>
-      <Container>
+        <Container>
           <IntroTitle>Sam.</IntroTitle>
           <IntroSub>A statically generated site using{' '}
           <a href="https://nextjs.org/" className="underline hover:text-success duration-200 transition-colors">Next.js</a>{' '}
