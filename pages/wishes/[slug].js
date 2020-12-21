@@ -16,9 +16,9 @@ import Wishes from '@/components/wishes/wishes'
 import { getPostBySlug, getAllPosts } from '@/lib/api'
 import markdownToHtml from '@/lib/markdownToHtml'
 
-export default function Post({ post, preview }) {
+export default function Post({ wish, preview }) {
   const router = useRouter()
-  if (!router.isFallback && !post?.slug) {
+  if (!router.isFallback && !wish?.slug) {
     return <ErrorPage statusCode={404} />
   }
   return (
@@ -30,14 +30,14 @@ export default function Post({ post, preview }) {
           <>
             <article>
               <Head>
-                <title>{post.title}</title>
-                <meta property="og:image" content={post.ogImage.url} />
+                <title>{wish.title}</title>
+                <meta property="og:image" content={wish.ogImage.url} />
               </Head>
               <PostHeader
-                title={post.title}
-                author={post.author}
+                title={wish.title}
+                author={wish.author}
               />
-              <Wishes wishes={post.wishes} content={post.content} />
+              <Wishes wishes={wish.wishes} content={wish.content} />
             </article>
           </>
         )}
@@ -47,7 +47,7 @@ export default function Post({ post, preview }) {
 }
 
 export async function getStaticProps({ params }) {
-  const post = getPostBySlug(params.slug, [
+  const wish = getPostBySlug(params.slug, [
     'title',
     'date',
     'slug',
@@ -56,12 +56,12 @@ export async function getStaticProps({ params }) {
     'ogImage',
     'wishes'
   ])
-  const content = await markdownToHtml(post.content || '')
+  const content = await markdownToHtml(wish.content || '')
 
   return {
     props: {
-      post: {
-        ...post,
+      wish: {
+        ...wish,
         content,
       },
     },
