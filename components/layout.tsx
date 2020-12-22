@@ -1,7 +1,13 @@
+//features
 import Meta from '@/components/meta'
 import Nav from '@/components/nav'
 
-export default function Layout({children}) {
+//types
+type props = {
+  children: React.ReactNode
+}
+
+export default function Layout({children}: props) {
   return (
     <>
       <Meta />

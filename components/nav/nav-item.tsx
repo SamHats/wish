@@ -2,7 +2,7 @@
 import NavLink from './nav-link'
 
 //types
-import { NavItemProps } from './navTypes'
+import { NavItemProps } from './nav-types'
 
 export default function NavItem({label, src}: NavItemProps) {
   const linkStyle = 'block w-full relative px-4 py-1 leading-6 sm:text-xl font-semibold rounded-full'

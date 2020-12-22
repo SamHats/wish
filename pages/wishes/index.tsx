@@ -6,18 +6,15 @@ import Head from 'next/head'
 // Features
 import IntroTitle from '@/components/intro/intro-title'
 import IntroSub from '@/components/intro/intro-sub'
-import MoreWishes from '@/components/wishes/more-wishes'
+import WishListing from '@/components/wishes/wish-listing'
 
 // Utilities
 import { getAllPosts } from '@/lib/api'
 
 // Types
-import Wish from '@/types/wish'
-type Props = {
-  allWishes: Wish[]
-}
+import { WishLinksProps } from '@/components/wishes/wish-types'
 
-export default function Index({ allWishes }: Props) {
+export default function Index({ allWishes }: WishLinksProps) {
   return (
     <>
       <Layout>
@@ -27,7 +24,7 @@ export default function Index({ allWishes }: Props) {
         <Container>
           <IntroTitle>Wishes</IntroTitle>
           <IntroSub>A bunch of wishes</IntroSub>
-          {allWishes.length > 0 && <MoreWishes wishes={allWishes} />}
+          {allWishes.length > 0 && <WishListing allWishes={allWishes} />}
         </Container>
       </Layout>
     </>

@@ -8,3 +8,7 @@ export type NavLinkProps = {
   href: string
   children: any
 }
+
+export type navProps = {
+  className: string
+}

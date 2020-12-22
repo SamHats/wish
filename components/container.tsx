@@ -1,7 +1,7 @@
-type Props = {
+type props = {
   children?: React.ReactNode
 }
 
-export default function Container({ children }: Props) {
+export default function Container({ children }: props) {
   return <div>{children}</div>
 }
