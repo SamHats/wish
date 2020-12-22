@@ -16,13 +16,17 @@ import Wishes from '@/components/wishes/wishes'
 import { getPostBySlug, getAllPosts } from '@/lib/api'
 import markdownToHtml from '@/lib/markdownToHtml'
 
-export default function Post({ wish, preview }) {
+// Types
+import { GetStaticPaths, GetStaticProps } from 'next'
+import { wishPostProps } from '@/components/wishes/wish-types'
+
+export default function Post({ wishPost }: wishPostProps) {
   const router = useRouter()
-  if (!router.isFallback && !wish?.slug) {
+  if (!router.isFallback && !wishPost?.slug) {
     return <ErrorPage statusCode={404} />
   }
   return (
-    <Layout preview={preview}>
+    <Layout>
       <Container>
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
@@ -30,14 +34,11 @@ export default function Post({ wish, preview }) {
           <>
             <article>
               <Head>
-                <title>{wish.title}</title>
-                <meta property="og:image" content={wish.ogImage.url} />
+                <title>{wishPost.title}</title>
+                {wishPost.ogImage && <meta property="og:image" content={wishPost.ogImage.url} />}
               </Head>
-              <PostHeader
-                title={wish.title}
-                author={wish.author}
-              />
-              <Wishes wishes={wish.wishes} content={wish.content} />
+              <PostHeader author={wishPost.author} />
+              <Wishes wishes={wishPost.wishes} content={wishPost.content} />
             </article>
           </>
         )}
@@ -46,36 +47,38 @@ export default function Post({ wish, preview }) {
   )
 }
 
-export async function getStaticProps({ params }) {
-  const wish = getPostBySlug(params.slug, [
+type PageProps = {
+  params: {
+    slug: string
+  }
+}
+export const getStaticProps = async ({params}: PageProps & GetStaticProps) => {
+  const wishPost = getPostBySlug(params.slug, [
     'title',
-    'date',
     'slug',
     'author',
     'content',
     'ogImage',
     'wishes'
   ])
-  const content = await markdownToHtml(wish.content || '')
-
+  const content = await markdownToHtml(wishPost.content || '')
   return {
     props: {
-      wish: {
-        ...wish,
+      wishPost: {
+        ...wishPost,
         content,
       },
     },
   }
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const posts = getAllPosts(['slug'])
-
   return {
-    paths: posts.map((post) => {
+    paths: posts.map((posts) => {
       return {
         params: {
-          slug: post.slug,
+          slug: posts.slug,
         },
       }
     }),
