@@ -22,7 +22,7 @@ export type wishPostProps = {
   wishPost: {
     author: { name: string }
     title: string
-    wishes: WishesProps
+    wishes: WishProps[]
     content: string
     slug: string
     ogImage?: { url: string }

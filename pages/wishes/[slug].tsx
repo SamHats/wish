@@ -11,6 +11,7 @@ import Container from '@/components/container'
 import PostHeader from '@/components/wishes/wish-header'
 import PostTitle from '@/components/wishes/wish-title'
 import Wishes from '@/components/wishes/wishes'
+import WishBody from '@/components/wishes/wish-body'
 
 // Utilities
 import { getPostBySlug, getAllPosts } from '@/lib/api'
@@ -25,6 +26,7 @@ export default function Post({ wishPost }: wishPostProps) {
   if (!router.isFallback && !wishPost?.slug) {
     return <ErrorPage statusCode={404} />
   }
+  const wishContainerStyle = "p-8 bg-yellow-100"
   return (
     <Layout>
       <Container>
@@ -38,7 +40,10 @@ export default function Post({ wishPost }: wishPostProps) {
                 {wishPost.ogImage && <meta property="og:image" content={wishPost.ogImage.url} />}
               </Head>
               <PostHeader author={wishPost.author} />
-              <Wishes wishes={wishPost.wishes} content={wishPost.content} />
+              <section className={wishContainerStyle}>
+                <Wishes wishes={wishPost.wishes} />
+                <WishBody content={wishPost.content} />
+              </section>
             </article>
           </>
         )}
@@ -47,12 +52,12 @@ export default function Post({ wishPost }: wishPostProps) {
   )
 }
 
-type PageProps = {
+type Params = {
   params: {
     slug: string
   }
 }
-export const getStaticProps = async ({params}: PageProps & GetStaticProps) => {
+export const getStaticProps = async ({ params }: Params & GetStaticProps) => {
   const wishPost = getPostBySlug(params.slug, [
     'title',
     'slug',
@@ -73,12 +78,12 @@ export const getStaticProps = async ({params}: PageProps & GetStaticProps) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = getAllPosts(['slug'])
+  const wishes = getAllPosts(['slug'])
   return {
-    paths: posts.map((posts) => {
+    paths: wishes.map((wishes) => {
       return {
         params: {
-          slug: posts.slug,
+          slug: wishes.slug,
         },
       }
     }),
