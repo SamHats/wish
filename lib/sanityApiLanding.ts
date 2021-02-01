@@ -2,11 +2,6 @@ import client from './sanity'
 
 const getClient = () => (client)
 
-export async function getLandingWithSlug() {
-  const data = await client.fetch(`*[_type == "landing"] {'slug': slug.current }`)
-  return data
-}
-
 const landingFields = `
   title,
   summary,
