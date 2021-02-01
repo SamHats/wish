@@ -1,0 +1,13 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  //
+  // TO USE VSCODE DEBUGGING, INSTALL "DEBUGGER FOR CHROME" EXTENSION IN VSCODE,
+  // ENSURE APPROPRIATE DEV/STORYBOOK TERMINAL IS RUNNING AND THEN HIT F5 TO
+  // RUN THE SELECTED LAUNCH CONFIG TO OPEN UP A SPECIAL DEBUGGING BROWSER.
+  // BREAKPOINTS AND WATCHES WILL WORK.
+  "version": "0.2.0",
+  "configurations": [
+  ]
+}
