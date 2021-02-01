@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import IntroTitle from '@/components/intro/intro-title'
 import IntroSub from '@/components/intro/intro-sub'
-import BlockContent from '@sanity/block-content-to-react'
+const BlockContent = require('@sanity/block-content-to-react')
 
 //layout
 import Layout from '@/components/layout'
@@ -33,9 +33,9 @@ export default function Post({ post }: pageParams) {
   return (
     <Layout>
       <Container>
-        <IntroTitle>{post.title}</IntroTitle>
-        <IntroSub>{post.author.name}</IntroSub>
-        <BlockContent blocks={post.body} className="prose" />
+        <IntroTitle>{post?.title}</IntroTitle>
+        <IntroSub>{post?.author?.name}</IntroSub>
+        <BlockContent blocks={post?.body} className="prose" />
       </Container>
     </Layout>
   )
