@@ -5,13 +5,14 @@ import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import IntroTitle from '@/components/intro/intro-title'
 import IntroSub from '@/components/intro/intro-sub'
+import BlockContent from '@sanity/block-content-to-react'
 
 //layout
 import Layout from '@/components/layout'
 import Container from '@/components/container'
 
 //utilites
-import { getPostWithSlug, getPost } from '@/lib/sanityApi'
+import { getPostWithSlug, getPost } from '@/lib/sanityApiPosts'
 
 type pageParams = {
   post: {
@@ -20,6 +21,7 @@ type pageParams = {
     author: {
       name: string
     }
+    body: [],
   },
 }
 export default function Post({ post }: pageParams) {
@@ -28,12 +30,12 @@ export default function Post({ post }: pageParams) {
     return <ErrorPage statusCode={404} />
   }
 
-  console.info(post)
   return (
     <Layout>
       <Container>
         <IntroTitle>{post.title}</IntroTitle>
         <IntroSub>{post.author.name}</IntroSub>
+        <BlockContent blocks={post.body} className="prose" />
       </Container>
     </Layout>
   )

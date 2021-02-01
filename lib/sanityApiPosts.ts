@@ -13,7 +13,6 @@ const postFields = `
   date,
   body,
   'slug': slug.current,
-  'coverImage': coverImage.asset->url,
   'author': author->{name, 'picture': picture.asset->url},
 `
 
