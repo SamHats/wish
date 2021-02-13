@@ -2,16 +2,16 @@
 import WishLink from '@/components/wishes/wish-link'
 
 //types
-import { WishLinksProps } from '@/components/wishes/wish-types'
+import { WishLinkProps, WishLinksProps } from '@/types/wish'
 
-export default function WishListing({ allWishes }: WishLinksProps) {
+export default function WishListing({ wishLists }: WishLinksProps) {
   return (
     <section>
-      {allWishes.map((wishLink) => (
+      {wishLists.map((wishLink: WishLinkProps) => (
         <WishLink
-          key={wishLink.slug}
+          key={wishLink.id}
           title={wishLink.title}
-          slug={wishLink.slug}
+          id={`./wishes/${wishLink.id}`}
         />
       ))}
     </section>

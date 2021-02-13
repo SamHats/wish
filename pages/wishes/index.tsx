@@ -9,35 +9,30 @@ import IntroSub from '@/components/intro/intro-sub'
 import WishListing from '@/components/wishes/wish-listing'
 
 // Utilities
-import { getAllPosts } from '@/lib/api'
+import { getClient } from '@/lib/sanity.server'
+import { wishListsQuery } from '@/lib/queries'
 
-// Types
-import { WishLinksProps } from '@/components/wishes/wish-types'
+//types
+import { WishListsProps } from '@/types/wish'
 
-export default function Index({ allWishes }: WishLinksProps) {
+export default function Index({ wishLists }: WishListsProps) {
   return (
-    <>
-      <Layout>
-        <Head>
-          <title>Wishes</title>
-        </Head>
-        <Container>
-          <IntroTitle>Wishes</IntroTitle>
-          <IntroSub>A bunch of wishes</IntroSub>
-          {allWishes.length > 0 && <WishListing allWishes={allWishes} />}
-        </Container>
-      </Layout>
-    </>
+    <Layout>
+      <Head>
+        <title>Wishes</title>
+      </Head>
+      <Container>
+        <IntroTitle>Wishes</IntroTitle>
+        <IntroSub>A bunch of wishes</IntroSub>
+        {wishLists?.length > 0 && <WishListing wishLists={wishLists} />}
+      </Container>
+    </Layout>
   )
 }
 
 export async function getStaticProps() {
-  const allWishes = getAllPosts([
-    'title',
-    'slug',
-  ])
-
+  const wishLists = await getClient().fetch(wishListsQuery)
   return {
-    props: { allWishes },
+    props: { wishLists }
   }
 }
