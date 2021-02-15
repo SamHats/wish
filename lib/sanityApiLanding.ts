@@ -1,6 +1,4 @@
-import client from './sanity'
-
-const getClient = () => (client)
+import { sanityClient } from '@/lib/sanity.server'
 
 const landingFields = `
   title,
@@ -10,9 +8,8 @@ const landingFields = `
 `
 
 export async function getLanding(slug: string) {
-  const curClient = getClient()
   const [landing] = await Promise.all([
-    curClient
+    sanityClient
       .fetch(
         `*[_type == "landing"] {${landingFields}}`,
         { slug }

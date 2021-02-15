@@ -10,7 +10,7 @@ import WishListing from '@/components/wishes/wish-listing'
 
 // Utilities
 import { getClient } from '@/lib/sanity.server'
-import { wishListsQuery } from '@/lib/queries'
+import { wishListsQuery } from '@/lib/wishQueries'
 
 //types
 import { WishListsProps } from '@/types/wish'

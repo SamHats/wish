@@ -55,7 +55,6 @@ export async function getStaticProps({ params }: Params) {
   }
 }
 type pathParams = {
-  post: {},
   slug: string
 }
 export async function getStaticPaths() {

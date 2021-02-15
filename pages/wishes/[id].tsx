@@ -14,7 +14,7 @@ import Wishes from '@/components/wishes/wishes'
 
 //utilities
 import { getClient, sanityClient } from '@/lib/sanity.server'
-import { wishQuery, wishIdQuery } from '@/lib/queries'
+import { wishQuery, wishIdQuery } from '@/lib/wishQueries'
 
 //types
 import { WishObjectProps } from '@/types/wish'

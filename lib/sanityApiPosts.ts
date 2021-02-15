@@ -1,9 +1,7 @@
-import client from './sanity'
-
-const getClient = () => (client)
+import { sanityClient } from '@/lib/sanity.server'
 
 export async function getPostWithSlug() {
-  const data = await client.fetch(`*[_type == "post"]{ 'slug': slug.current }`)
+  const data = await sanityClient.fetch(`*[_type == "post"]{ 'slug': slug.current }`)
   return data
 }
 
@@ -17,9 +15,8 @@ const postFields = `
 `
 
 export async function getPost(slug: string) {
-  const curClient = getClient()
   const [post] = await Promise.all([
-    curClient
+    sanityClient
       .fetch(
         `*[_type == "post" && slug.current == $slug] | order(_updatedAt desc) {
         ${postFields}
